@@ -87,12 +87,12 @@ function iconfontCSS(config) {
 		var codePoint = currentCodePoint;
 		var glyfName  = fileName;
 
-		var glyfCode = /u[^-]*-/;
+		var glyfCode = /u([^-]*)-/;
 
 		if (glyfCode.test(fileName)) {
 
-			codePoint = fileName.match(glyfCode)[0].replace('-', '');
-			glyfName  = fileName.replace(codePoint + '-', '');
+			codePoint = fileName.match(glyfCode)[1]
+			glyfName  = fileName.replace('u' + codePoint + '-', '');
 		}
 
 		// Add glyph
