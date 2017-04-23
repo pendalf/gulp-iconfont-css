@@ -85,7 +85,6 @@ function iconfontCSS(config) {
 		}
 
 		var codePoint = currentCodePoint;
-		var glyfName  = fileName;
 
 		var glyfCode = /u([^-]*)-/;
 
@@ -97,7 +96,7 @@ function iconfontCSS(config) {
 
 		// Add glyph
 		glyphMap.push({
-			fileName: glyfName,
+			fileName: fileName,
 			codePoint: codePoint
 		});
 
