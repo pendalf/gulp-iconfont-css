@@ -84,10 +84,21 @@ function iconfontCSS(config) {
 			currentCodePoint = (currentGlyph++).toString(16).toUpperCase();
 		}
 
+		var codePoint = currentCodePoint;
+		var glyfName  = fileName;
+
+		var glyfCode = /u[^-]*-/;
+
+		if (glyfCode.test(fileName)) {
+
+			codePoint = fileName.match(glyfCode)[0].replace('-', '');
+			glyfName  = fileName.replace(codePoint + '-', '');
+		}
+
 		// Add glyph
 		glyphMap.push({
-			fileName: fileName,
-			codePoint: currentCodePoint
+			fileName: glyfName,
+			codePoint: codePoint
 		});
 
 		// Prepend codePoint to input file path for gulp-iconfont
