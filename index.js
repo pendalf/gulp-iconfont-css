@@ -92,7 +92,7 @@ function iconfontCSS(config) {
 		if (glyfCode.test(fileName)) {
 
 			codePoint = fileName.match(glyfCode)[1]
-			glyfName  = fileName.replace('u' + codePoint + '-', '');
+			fileName  = fileName.replace('u' + codePoint + '-', '');
 		}
 
 		// Add glyph
@@ -102,9 +102,9 @@ function iconfontCSS(config) {
 		});
 
 		// Prepend codePoint to input file path for gulp-iconfont
-		inputFilePrefix = 'u' + currentCodePoint + '-';
+		inputFilePrefix = 'u' + codePoint + '-';
 
-		file.path = path.dirname(file.path) + '/' + inputFilePrefix + path.basename(file.path);
+		file.path = path.dirname(file.path) + '/' + path.basename(file.path);
 
 		this.push(file);
 		cb();
